@@ -20,9 +20,24 @@ import (
 )
 
 func main() {
-	fmt.Println("dsfdsf")
+	nums := []int{2, 7, 11, 15}
+	target := 9
+	fmt.Println(twoSum(nums, target))
+	// fmt.Println(twoSum([]int{2, 7, 11, 15}, 9))
 }
 
 func twoSum(nums []int, target int) []int {
-
+	/*
+		官方方法三：一遍哈希表
+	*/
+	m := make(map[int]int)
+	for i := 0; i < len(nums); i++ {
+		dv := target - nums[i]
+		a, ok := m[dv]
+		if ok != false {
+			return []int{a, i}
+		}
+		m[nums[i]] = i
+	}
+	return []int{-1, -1}
 }
